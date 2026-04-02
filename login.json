@@ -1,0 +1,20 @@
+[
+    {
+        "username": "John Doe",
+        "password": "password123",
+        "login": 3,
+        "highScore": 45
+    },
+    {
+        "username": "Jane Smith",
+        "password": "securepass",
+        "login": 1,
+        "highScore": 92
+    },
+    {
+        "username": "Batbileg",
+        "password": "bat123",
+        "login": 2,
+        "highScore": 100.0
+    }
+]
