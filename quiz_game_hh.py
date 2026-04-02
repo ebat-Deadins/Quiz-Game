@@ -1,4 +1,5 @@
 import json 
+from colorama import Fore, Style
 import csv # csv модуль нь CSV файлуудыг унших, бичихэд ашиглагддаг. Энэ нь Python-д CSV файлуудыг амархан удирдахад тусалдаг.
 # Comma-Separated Values CSV файлыг ихэвчлэн өгөгдөл хадгалах, унших, боловсруулах үед ашигладаг.
 
@@ -52,10 +53,10 @@ def ask(name):
                 user = input("Таны хариулт (A-D): ").strip().upper()
                 if user in ["A", "B", "C", "D"]:
                     if q["choices"][ord(user) - 65] == q["answer"]:
-                        print("Зөв хариулт!")
+                        print(Fore.GREEN + "Зөв!" + Style.RESET_ALL)
                         correct_count += 1
                     else:
-                        print(f"Буруу! Зөв хариулт: {q['answer']}")
+                        print(Fore.RED + "Буруу!" + Style.RESET_ALL + f" Зөв хариулт: {q['answer']}")
                         wrong_count += 1
                     break  # ← if-ийн гадна, while-ийн доор
                 else:
@@ -79,7 +80,7 @@ def login():
                 print("Нууц үг буруу байна.")
                 return
     if not found:
-        print("Шинэ хэрэглэгч байна. Бүртгүүлэх үү...Y/N") 
+        print("Шинэ хэрэглэгч байна. Бүртгүүлэх үү...Y/N--> :") 
         choice = input().strip().upper()
         if choice == "Y":
             password = input("Нууц үгээ оруулна уу: ")
@@ -87,6 +88,7 @@ def login():
             print("Шинэ хэрэглэгч бүртгэгдлээ.")
             with open("login.json", "w", encoding="utf-8") as f:
                 json.dump(users, f, ensure_ascii=False, indent=4)
+            ask(name)
         else:
             print("Нэвтрэх үйлдэл цуцлагдлаа. Та эхнээс нь дахин оролдоно уу.")
             return
@@ -103,5 +105,13 @@ def save_score(name):
     with open("login.json", "w", encoding="utf-8") as f:
         json.dump(scores, f, ensure_ascii=False, indent=4)
 login()
+score = correct_count / len(questions) * 100
 print(f"Нийт: {len(questions)}, Зөв: {correct_count}, Буруу: {wrong_count}")
 print(f"Оноо: {correct_count}/{len(questions)} = { correct_count / len(questions) * 100:.1f}%") # tkinterees salsaan
+print("\nТа манай Quiz-д оролцсон танд баярлалаа!")
+if score < 50:
+    print("Битгий бууж өг. Номоо дахин нэг хараад эргэж оролдоорой!")
+elif score < 80:
+    print("Сайн байна! Та боломжийн түвшинд байна. Дараа илүү өндөр оноо авна гэж итгэж байна.")
+else:
+    print("Гайхалтай үр дүн! Та үнэхээр мэдлэг арвин байна.")
