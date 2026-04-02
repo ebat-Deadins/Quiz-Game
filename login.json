@@ -16,5 +16,17 @@
         "password": "bat123",
         "login": 2,
         "highScore": 100.0
+    },
+    {
+        "username": "BuynErdene",
+        "password": "ByunErdene1234",
+        "login": 1,
+        "highScore": 0
+    },
+    {
+        "username": "DulguunUndral",
+        "password": "Dukuuk1234",
+        "login": 1,
+        "highScore": 0
     }
 ]
