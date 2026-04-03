@@ -49,12 +49,12 @@ def ask(name):
         for q in questions:  # Асуулт бүрийг асуух
             print("\n" + q["question"])  # Асуултыг хэвлэх
             for i, choice in enumerate(q["choices"]):  # Сонголтуудыг A-D болгон хэвлэх
-                print(f"{chr(65+i)}) {choice}")
+                print(f"{chr(65+i)}) {choice}") # chr --> 65 нь 'A' үсгийн ASCII код, i нэмэхэд дараагийн үсэг гарна
 
             while True:
                 user = input("Таны хариулт (A-D): ").strip().upper()  # Хариулт авах
                 if user in ["A", "B", "C", "D"]:  # Зөв формат шалгах
-                    if q["choices"][ord(user) - 65] == q["answer"]:  # Зөв эсэхийг шалгах
+                    if q["choices"][ord(user) - 65] == q["answer"]:# ord --> 'A' нь 65, 'B' нь 66 гэх мэт
                         print(Fore.GREEN + "Зөв!" + Style.RESET_ALL)  # Зөв бол ногоон
                         correct_count += 1  # Зөв тоог нэмэх
                     else:
