@@ -1,6 +1,7 @@
 import json  # JSON файл унших, бичихэд ашиглана
 from colorama import Fore, Style  # Консол дээр өнгөт текст хэвлэхэд ашиглана
 import csv  # CSV файл уншихад ашиглагдана
+# CSV (Comma-Separated Values) файлтай ажиллах зориулалттай стандарт санг (module) ашиглахыг хэлдэг.
 import random  # Санамсаргүй байдлаар асуулт гаргах боломжтой
 
 correct_count = 0  # Зөв хариултын тоо хадгалах хувьсагч
