@@ -1,6 +1,7 @@
 import json  # JSON файл унших, бичихэд ашиглана
 from colorama import Fore, Style  # Консол дээр өнгөт текст хэвлэхэд ашиглана
 import csv  # CSV файл уншихад ашиглагдана
+import random  # Санамсаргүй байдлаар асуулт гаргах боломжтой
 
 correct_count = 0  # Зөв хариултын тоо хадгалах хувьсагч
 wrong_count = 0  # Буруу хариултын тоо хадгалах хувьсагч
@@ -45,7 +46,7 @@ def ask(name):
                     "answer": row["answer"]  # Зөв хариулт
                 }
                 questions.append(q)  # Жагсаалтанд нэмэх
-
+        random.shuffle(questions) # Асуултуудыг санамсаргүйгээр эргүүлэх
         for q in questions:  # Асуулт бүрийг асуух
             print("\n" + q["question"])  # Асуултыг хэвлэх
             for i, choice in enumerate(q["choices"]):  # Сонголтуудыг A-D болгон хэвлэх
@@ -54,7 +55,7 @@ def ask(name):
             while True:
                 user = input("Таны хариулт (A-D): ").strip().upper()  # Хариулт авах
                 if user in ["A", "B", "C", "D"]:  # Зөв формат шалгах
-                    if q["choices"][ord(user) - 65] == q["answer"]:# ord --> 'A' нь 65, 'B' нь 66 гэх мэт
+                    if q["choices"][ord(user) - 65] == q["answer"]:  # Зөв эсэхийг шалгах ord --> 'A' нь 65, 'B' нь 66 гэх мэт
                         print(Fore.GREEN + "Зөв!" + Style.RESET_ALL)  # Зөв бол ногоон
                         correct_count += 1  # Зөв тоог нэмэх
                     else:
