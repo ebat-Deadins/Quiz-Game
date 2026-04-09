@@ -83,7 +83,8 @@ def login():
                 ask(name)  # Тоглоом эхлүүлэх
                 break
             else:
-                print("Нууц үг буруу байна.")  # Буруу password
+                print("Нууц үг буруу байна. Та дахин оролдоно уу")  # Буруу password
+                login()
                 return
 
     if not found:  # Хэрэглэгч олдоогүй бол
